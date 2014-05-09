@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+    <include name="CommonBackground">
+        <control type="image">
+            <description>Normal Default Background Image</description>
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <texture>$INFO[Skin.CurrentTheme,special://skin/backgrounds/,.jpg]</texture>
+            <visible>![Skin.HasSetting(UseCustomBackground) + !IsEmpty(Skin.String(CustomBackgroundPath))]</visible>
+            <include>VisibleFadeEffect</include>
+        </control>
+        <control type="image">
+            <description>User Set Background Image</description>
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <texture>$INFO[Skin.String(CustomBackgroundPath)]</texture>
+            <visible>Skin.HasSetting(UseCustomBackground) + !IsEmpty(Skin.String(CustomBackgroundPath))</visible>
+            <include>VisibleFadeEffect</include>
+        </control>
+        <control type="image">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+            <include>backgroundfade</include>
+            <fadetime>FanartCrossfadeTime</fadetime>
+            <visible>!Skin.HasSetting(HideBackGroundFanart) + !IsEmpty(ListItem.Property(Fanart_Image))</visible>
+            <include>Window_OpenClose_Animation</include>
+            <visible>![Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)]</visible>
+        </control>
+        <control type="image">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <texture>special://skin/backgrounds/media-overlay.jpg</texture>
+            <visible>[Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)] + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
+            <include>VisibleFadeEffect</include>
+        </control>
+        <control type="visualisation">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <visible>Player.HasAudio + !Skin.HasSetting(ShowBackgroundVis) + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
+            <visible>!SubString(Window(videolibrary).Property(TvTunesIsAlive),True)</visible>
+        </control>
+        <control type="videowindow">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <visible>Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo) + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
+        </control>
+        <control type="image">
+            <posx>0</posx>
+            <posy>-60</posy>
+            <width>1920</width>
+            <height>180</height>
+            <texture flipy="true">HomeNowPlayingBack.png</texture>
+            <visible>[Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)] | [Player.HasAudio + ![Skin.HasSetting(ShowBackgroundVis) | SubString(Window(videolibrary).Property(TvTunesIsAlive),True)]] | [!Skin.HasSetting(HideBackGroundFanart) + !IsEmpty(ListItem.Property(Fanart_Image))]</visible>
+            <include>VisibleFadeEffect</include>
+        </control>
+    </include>
+    <include name="ContentPanelBackgrounds">
+        <control type="image">
+            <posx>0</posx>
+            <posy>150r</posy>
+            <width>1920</width>
+            <height>150</height>
+            <texture>floor.png</texture>
+            <animation effect="slide" start="0,15" end="0,0" time="200" condition="Window.Previous(Home)">WindowOpen</animation>
+            <animation effect="slide" start="0,0" end="0,22" time="200" condition="Window.Next(Home)">WindowClose</animation>
+        </control>
+        <control type="group">
+            <include>Window_OpenClose_Animation</include>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(50)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>1125</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>1125</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(504) | Control.IsVisible(550) | Control.IsVisible(512)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>960</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>960</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1050</posx>
+                    <posy>90</posy>
+                    <width>795</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1050</posx>
+                    <posy>978</posy>
+                    <width>795</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(551) | Control.IsVisible(560) | Control.IsVisible(511) | Control.IsVisible(506) | Control.IsVisible(513)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>1260</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>1260</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1350</posx>
+                    <posy>90</posy>
+                    <width>495</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1350</posx>
+                    <posy>978</posy>
+                    <width>495</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(501)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>75</posy>
+                    <width>1770</width>
+                    <height>915</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>1770</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(503)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>345</posy>
+                    <width>960</width>
+                    <height>645</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>960</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1050</posx>
+                    <posy>345</posy>
+                    <width>825</width>
+                    <height>645</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1050</posx>
+                    <posy>978</posy>
+                    <width>825</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+			<!--Conpanel id Mode Movies id 502 -->
+			<control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(502)</visible>
+                <control type="image">
+                    <posx>220</posx>
+                    <posy>40</posy>
+                    <width>1410</width>
+                    <height>945</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>220</posx>
+                    <posy>978</posy>
+                    <width>1410</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>   
+			
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(505) </visible>
+                <control type="image">
+                    <posx>112</posx>
+                    <posy>90</posy>
+                    <width>1695</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>112</posx>
+                    <posy>978</posy>
+                    <width>1695</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(514)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>735</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>735</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>825</posx>
+                    <posy>90</posy>
+                    <width>1020</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>825</posx>
+                    <posy>978</posy>
+                    <width>1020</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(515)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>600</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>600</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>690</posx>
+                    <posy>90</posy>
+                    <width>1155</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>690</posx>
+                    <posy>978</posy>
+                    <width>1155</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+    <include name="ContentPanelBackgroundsPVR">
+        <control type="image">
+            <posx>0</posx>
+            <posy>150r</posy>
+            <width>1920</width>
+            <height>150</height>
+            <texture>floor.png</texture>
+            <animation effect="fade" time="250" condition="Window.Previous(Home)">WindowOpen</animation>
+            <animation effect="fade" time="250" condition="Window.Next(Home)">WindowClose</animation>
+        </control>
+        <control type="group">
+            <include>Window_OpenClose_Animation</include>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(10) | Control.IsVisible(14) | Control.IsVisible(15) | Control.IsVisible(16) | Control.IsVisible(17)</visible>
+                <control type="image">
+                    <posx>82</posx>
+                    <posy>90</posy>
+                    <width>1755</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>82</posx>
+                    <posy>978</posy>
+                    <width>1755</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(11) | Control.IsVisible(12)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>675</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>675</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>765</posx>
+                    <posy>90</posy>
+                    <width>1095</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>765</posx>
+                    <posy>978</posy>
+                    <width>1095</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <include>VisibleFadeEffect</include>
+                <visible>Control.IsVisible(13)</visible>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>90</posy>
+                    <width>1260</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>75</posx>
+                    <posy>978</posy>
+                    <width>1260</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1350</posx>
+                    <posy>90</posy>
+                    <width>495</width>
+                    <height>900</height>
+                    <texture border="15">ContentPanel.png</texture>
+                </control>
+                <control type="image">
+                    <posx>1350</posx>
+                    <posy>978</posy>
+                    <width>495</width>
+                    <height>96</height>
+                    <texture border="15">ContentPanelMirror.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="BackgroundGlobal_Mod">
+        <control type="image">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <texture>special://skin/backgrounds/bg.jpg</texture>
+        </control>
+        <control type="image">
+            <posx>28</posx>
+            <posy>28</posy>
+            <width>200</width>
+            <height>65</height>
+            <texture>icons/logo.png</texture>
+        </control>
+
+        <control type="list" id="8888">
+            <posx>1780</posx>
+            <posy>30</posy>
+            <width>200</width>
+            <height>60</height>
+            <ondown>9000</ondown>
+            <viewtype label="List">list</viewtype>
+            <scrolltime>200</scrolltime>
+            <focusposition>1</focusposition>
+            <orientation>horizontal</orientation>
+
+            <itemlayout width="70" height="70">
+                <control type="image">
+                    <width>50</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+            </itemlayout>
+
+            <focusedlayout width="70" height="70">
+                <control type="image">
+                    <width>55</width>
+                    <height>55</height>
+                    <align>center</align>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+
+            </focusedlayout>
+
+            <content>
+                <item id="11">
+                    <description>LOGIN</description>
+                    <icon>icons/login.png</icon>
+                    <onclick>activatewindow(AppearanceSettings)</onclick>
+                </item>
+                <item id="12">
+                    <description>SETTING</description>
+                    <icon>icons/icon-setting.png</icon>
+                    <onclick>activatewindow(VideosSettings)</onclick>
+                </item>
+
+            </content>
+
+        </control>
+
+        <control type="list" id="9000">
+            <posx>260</posx>
+            <posy>950</posy>
+            <width>1620</width>
+            <height>280</height>
+            <onup>8888</onup>
+            <ondown>60</ondown>
+            <viewtype label="List">list</viewtype>
+            <scrolltime>200</scrolltime>
+            <orientation>horizontal</orientation>
+
+            <itemlayout width="260" height="180">
+
+                <control type="image">
+                    <width>110</width>
+                    <height>130</height>
+                    <align>center</align>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+            </itemlayout>
+
+            <focusedlayout width="260" height="180">    
+
+                
+                <control type="image">
+                    <animation effect="slide" start="0,0" end="0,-30" time="100" >Focus</animation>
+                    <animation effect="slide" start="0,-30" end="0,0" time="100" >UnFocus</animation>
+                    <align>center</align>
+                    <width>110</width>
+                    <height>130</height>
+                    
+                    <texture>$INFO[ListItem.ActualIcon]</texture>       
+                    <visible>Control.HasFocus(9000)</visible>                
+                </control>
+                <control type="image">
+                    <align>center</align>
+                    <width>110</width>
+                    <height>130</height>                  
+                    <texture>$INFO[ListItem.Icon]</texture>       
+                    <visible>!Control.HasFocus(9000)</visible> 
+                </control>
+
+            </focusedlayout>
+
+            <content>
+                <item id="1">
+                    <description>TV</description>
+                    <icon>icons/icon-tv-hover.png</icon>
+                    <thumb>icons/icon-tv.png</thumb>
+                    <include>VisibleFadeEffect</include>
+                    <onclick>ActivateWindow(VideoLibrary,plugin://plugin.video.bit.livetv/)</onclick>
+                </item>
+                <item id="2">
+                    <description>VOD</description>
+                    <icon>icons/icon-vod-hover.png</icon>
+                    <thumb>icons/icon-vod.png</thumb>
+                    <onclick>ActivateWindow(VideoLibrary,plugin://plugin.video.youtube/?category=Film&feed=feed_category&path=/root/explore/categories)</onclick>
+                </item>
+                <item id="3">
+                    <description>RADIO</description>
+                    <icon>icons/icon-radio-hover.png</icon>
+                    <thumb>icons/icon-radio.png</thumb>
+                    <onclick>activatewindow(VideoLibrary,plugin://plugin.video.youtube/?feed=feed_categories&folder=true&login=false&path=/root/explore/categories)</onclick>
+                </item>
+                <item id="4">
+                    <description>MUSIC</description>
+                    <icon>icons/icon-music-hover.png</icon>
+                    <thumb>icons/icon-music.png</thumb>
+                    <onclick>ActivateWindow(VideoLibrary,plugin://plugin.video.bit.tvshow/)</onclick>
+                </item>
+                <item id="5">
+                    <description>TXT</description>
+                    <icon>icons/icon-txt-hover.png</icon>
+                    <thumb>icons/icon-txt.png</thumb>
+                    <onclick>activatewindow(VideoLibrary)</onclick>
+                </item>
+                <item id="6">
+                    <description>STORE</description>
+                    <icon>icons/icon-store-hover.png</icon>
+                    <thumb>icons/icon-store.png</thumb>
+                    <onclick>activatewindow(Settings)</onclick>
+                </item>
+
+            </content>
+
+        </control>
+
+    </include>
+
+    <include name="GlobalQC">
+        <control type="group">
+                <posx>1580</posx>
+                <posy>140</posy>
+                <control type="image">
+                    <width>325</width>
+                    <height>250</height>
+                    <texture >icons/img-qc-03.jpg</texture>
+                    <visible>Control.IsVisible(52)</visible>
+                </control>
+                <control type="image">
+                    <posy>270</posy>
+                    <width>325</width>
+                    <height>250</height>
+                    <texture >icons/img-qc-02.jpg</texture>
+                    <visible>Control.IsVisible(52)</visible>
+                </control>
+                 <control type="image">
+                    <posy>540</posy>
+                    <width>325</width>
+                    <height>250</height>
+                    <texture >icons/img-phim-01.jpg</texture>
+                    <visible>Control.IsVisible(52)</visible>
+                </control>
+            </control>
+    </include>
+
+</includes>

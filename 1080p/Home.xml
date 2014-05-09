@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="4">
+	<defaultcontrol always="false">9000</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+
+	<controls>
+
+		
+
+		<include>GlobalBackground</include>
+		<include>BackgroundGlobal_Mod</include>
+		
+
+		<!-- icon Clock -->
+		<control type="image">
+			<posx>100</posx>
+			<posy>220</posy>
+			<width>450</width>
+			<height>450</height>
+			<texture >icons/icon-clock.png</texture>
+		</control>
+
+		<!-- Background Weather -->
+		<control type="group">
+			<posx>890</posx>
+			<posy>260</posy>
+			<control type="image">
+				<posx>-35</posx>
+				<posy>-20</posy>
+				<width>750</width>
+				<height>500</height>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<texture>ContentPanel.png</texture>
+				
+			</control>
+
+			
+
+			<!-- Weather for Current day. -->
+			<control type="label">
+				<description>Day 0 Label</description>
+				<posx>390</posx>
+				<posy>0</posy>
+				<width>440</width>
+				<label>$INFO[Window(Weather).Property(Day0.Title)], $INFO[System.Date(dd-mm-yyyy)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>Large</font>
+				<align>left</align>			
+			</control>
+			<control type="label">
+				<description>Day 0 Label</description>
+				<posx>-30</posx>
+				<posy>-30</posy>
+				<height>240</height>
+				<label>$INFO[Window(Weather).Property(Current.Temperature)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>FontSize_180</font>
+				<align>left</align>	
+			</control>
+			<control type="label">
+				<description>Temperaturn Units</description>
+				<posx>156</posx>
+				<posy>10</posy>
+				<height>240</height>
+				<label>$INFO[System.TemperatureUnits]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>FontSize_40</font>
+				<align>left</align>	
+			</control>
+			<control type="image">
+				<description>Day 0 Icon</description>
+				<posx>185</posx>
+				<posy>10</posy>
+				<height>190</height>
+				<width>190</width>
+				<texture>$INFO[Window(Weather).Property(Day0.OutlookIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Day 0 LowTemp</description>
+				<posx>390</posx>
+				<posy>37</posy>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>Low: $INFO[Window(Weather).Property(Day0.LowTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Large</font>
+				<align>left</align>
+			</control>
+			<control type="label">
+				<description>Day 0 HighTemp</description>
+				<posx>390</posx>
+				<posy>85</posy>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>High: $INFO[Window(Weather).Property(Day0.HighTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Large</font>
+				<align>left</align>
+			</control>
+			<control type="label">
+				<description>Day 0 HumidityTemp</description>
+				<posx>390</posx>
+				<posy>133</posy>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>Humidity: $INFO[Window(Weather).Property(Current.Humidity)]</label>
+				<font>Large</font>
+				<align>left</align>
+			</control>
+
+			<!-- Weather for Next Day 1. -->
+			<control type="label">
+				<description>Day 1 Label</description>
+				<posx>-10</posx>
+				<posy>200</posy>
+				<width>155</width>
+				<label>$INFO[Window(Weather).Property(Day1.Title)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>Medium</font>
+				<align>center</align>			
+			</control>
+			<control type="image">
+				<description>Day 1 Icon</description>
+				<posx>5</posx>
+				<posy>250</posy>
+				<height>120</height>
+				<width>120</width>
+				<texture>$INFO[Window(Weather).Property(Day1.OutlookIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Day 1 Temp</description>
+				<posx>-10</posx>
+				<posy>370</posy>
+				<width>155</width>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>$INFO[Window(Weather).Property(Day1.LowTemp)]$INFO[System.TemperatureUnits] / $INFO[Window(Weather).Property(Day1.HighTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Small</font>
+				<align>center</align>
+			</control>
+			
+
+			<!-- Weather for Next Day 2. -->
+			<control type="label">
+				<description>Day 2 Label</description>
+				<posx>170</posx>
+				<posy>200</posy>
+				<width>155</width>
+				<label>$INFO[Window(Weather).Property(Day2.Title)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>Medium</font>
+				<align>center</align>			
+			</control>
+			<control type="image">
+				<description>Day 2 Icon</description>
+				<posx>185</posx>
+				<posy>250</posy>
+				<height>120</height>
+				<width>120</width>
+				<texture>$INFO[Window(Weather).Property(Day2.OutlookIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Day 2 Temp</description>
+				<posx>170</posx>
+				<posy>370</posy>
+				<width>155</width>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>$INFO[Window(Weather).Property(Day2.LowTemp)]$INFO[System.TemperatureUnits] / $INFO[Window(Weather).Property(Day2.HighTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Small</font>
+				<align>center</align>
+			</control>
+
+
+			<!-- Weather for Next Day 3. -->
+			<control type="label">
+				<description>Day 3 Label</description>
+				<posx>350</posx>
+				<posy>200</posy>
+				<width>155</width>
+				<label>$INFO[Window(Weather).Property(Day3.Title)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>Medium</font>
+				<align>center</align>			
+			</control>
+			<control type="image">
+				<description>Day 3 Icon</description>
+				<posx>365</posx>
+				<posy>250</posy>
+				<height>120</height>
+				<width>120</width>
+				<texture>$INFO[Window(Weather).Property(Day3.OutlookIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Day 3 Temp</description>
+				<posx>350</posx>
+				<posy>370</posy>
+				<width>155</width>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>$INFO[Window(Weather).Property(Day3.LowTemp)]$INFO[System.TemperatureUnits] / $INFO[Window(Weather).Property(Day3.HighTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Small</font>
+				<align>center</align>
+			</control>
+
+			<!-- Weather for Next Day 4. -->
+			<control type="label">
+				<description>Day 4 Label</description>
+				<posx>530</posx>
+				<posy>200</posy>
+				<width>155</width>
+				<label>$INFO[Window(Weather).Property(Day4.Title)]</label>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<font>Medium</font>
+				<align>center</align>			
+			</control>
+			<control type="image">
+				<description>Day 4 Icon</description>
+				<posx>545</posx>
+				<posy>250</posy>
+				<height>120</height>
+				<width>120</width>
+				<texture>$INFO[Window(Weather).Property(Day4.OutlookIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Day 4 Temp</description>
+				<posx>530</posx>
+				<posy>370</posy>
+				<width>155</width>
+				<visible effect="fade" time="0">Weather.IsFetched</visible>
+				<label>$INFO[Window(Weather).Property(Day4.LowTemp)]$INFO[System.TemperatureUnits] / $INFO[Window(Weather).Property(Day4.HighTemp)]$INFO[System.TemperatureUnits]</label>
+				<font>Small</font>
+				<align>center</align>
+			</control>
+
+		</control>
+
+
+	</controls>
+
+</window>
